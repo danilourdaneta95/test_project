@@ -1,0 +1,4 @@
+	* En este proyecto se encuentra la base de datos en formato sql para importar y posteriormente ejecutar las migraciones y seeder
+	* Si desea puede cambiar las credenciales para el envío de correo en el archivo .env. Por defecto hay un correo de prueba creado por mi al cual pueden acceder para ver los correos enviados
+	* Instalar las dependencias
+	* Para recibir el correo de inicio de sesión debe configurarlo en el LoginController. Por defecto está admin@admin.com
