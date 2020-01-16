@@ -19,6 +19,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('Logout');
 Route::middleware(['auth'])->group(function () {
     
     Route::get('/', 'HomeController@index')->name('Home');
+    Route::get('/getCategories', 'HomeController@get')->name('getCategories');
     
     Route::get('/Productos', 'ProductosController@index')->name('Productos');
     Route::get('/Productos/New', 'ProductosController@create')->name('ProductosNew');

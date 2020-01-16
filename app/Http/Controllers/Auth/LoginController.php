@@ -6,6 +6,7 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Mail;
 
 class LoginController extends Controller
 {
@@ -37,6 +38,14 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function authenticated(Request $request, $user)
+    {
+        Mail::send('emails.userlogin', ['user' => $user], function ($message) use ($user) {
+            $message->from('correodepruebalaravel@gmail.com', 'Sistema'); 
+            $message->to($user->email)->subject('Nuevo inicio de sesión'); //Configurar correo de llegada. Por defecto está el correo del usuario (admin@admin.com) NOTA: Este correo no existe
+        });
     }
 
     protected function credentials(Request $request)
